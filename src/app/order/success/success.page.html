@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>success</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="order-successful">
+    <ion-icon name="checkmark-circle" color="success"></ion-icon>
+    <span class="great-text">Your Order was successful!!!</span>
+    <ion-button color="danger" class="succes-page-btn" (click)="gorouter()"> VIEW ORDER</ion-button>
+    <ion-button color="light"  class="succes-page-btn" [routerLink]="'/tabs/home'">SHOP AGAIN</ion-button>
+  </div>
+</ion-content>

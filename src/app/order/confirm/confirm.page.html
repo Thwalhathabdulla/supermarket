@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conform</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="business-outline"></ion-icon>
+    <ion-label class="ion-padding"> {{address.name}}<br> {{address.Buildinf}},
+      {{address.Street}}, {{address.Postal}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="cash-outline"></ion-icon>
+    <ion-label class="ion-padding">Total <span class="ion-padding">{{total | currency:'AED':true }}</span></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label class="ion-padding">Payment</ion-label>
+      <ion-label>Cash</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="success" class="ion-padding-left" (click)="conformOrder()" expand="full">conform</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" (click)="closeModal()" expand="full">close</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

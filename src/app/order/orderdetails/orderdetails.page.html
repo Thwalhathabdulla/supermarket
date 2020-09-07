@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="" (click)= "back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ORDER DETAILS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>order Status</ion-label>
+      <ion-label>{{OrderStatus}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Order Amount</ion-label>
+      <ion-label>{{amount | currency:'AED' }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Delevery Address</ion-label>
+      <ion-label> {{name}} <br>{{addr1}}<br>{{addr2}}  </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Order Date& Time</ion-label>
+      <ion-label>{{orderDate| date: 'dd/MM/yyyy hh:mm a'}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <ion-list>
+      <ion-list-header>
+        ORDER ITEM
+      </ion-list-header>
+      <ion-item *ngFor="let item of items">
+        <ion-avatar slot="start">
+          <img src="{{item.img}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.ItemName}}</h2>
+          <h3>{{item.measure}}{{item.Unit}} </h3>
+          <p>{{item.Quantity}} X {{item.Price |currency:'AED'}} <span class="item-amount">{{getTotal(item) | currency:'AED'}}</span></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  
+</ion-content>
+  

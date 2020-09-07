@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>YOUR ORDER</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- selevery details section -->
+<section>
+  <ion-card>
+    <ion-card-content>
+      <div class="order-details">
+        <span>{{orderdate | date: ' hh:mm a'}}</span>
+        <ion-icon name="checkmark-circle" class="check-icon"></ion-icon>
+        <span class="actions">Submitted</span>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <div class="order-details">
+        <span>{{AssignDate | date: ' hh:mm a'}}</span>
+        <span class="circle" *ngIf="!AssignDate"></span>
+        <ion-icon name="checkmark-circle" *ngIf="AssignDate" class="check-icon"></ion-icon>
+        <span class="actions">Assigned</span>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <div class="order-delevery">
+        <!-- <span>12.47 PM</span> -->
+        <span>{{Delivered | date: ' hh:mm a'}}</span>
+        <span class="circle" *ngIf="!Delivered"></span>
+        <ion-icon name="checkmark-circle" *ngIf="Delivered" class="check-icon"></ion-icon>
+        <span class="circle"></span> 
+        <span class="actions">Delevered</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+ 
+  
+</section>
+
+
+  <!-- actions grid section -->
+  <section class="action-section ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding" (click)="callfor()">
+          <ion-icon name="call" class="call-icons"></ion-icon>
+          <br><span>CALL SHOP</span>
+        </ion-col>
+        <ion-col class="cancel-btn" (click)="cancelorder()" [hidden]="Delivered">
+          <ion-icon name="close-circle" class="cancel-icons"></ion-icon>
+          <br><span>CANCEL ORDER</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-padding">
+          <ion-icon name="alert" class="issue-icons"></ion-icon>
+          <br><span>REPORT ISSUE</span>
+        </ion-col>
+        <ion-col class="view-btn" [routerLink]="'/tabs/orderdetails'">
+          <span class="view-order-icon"><fa-icon [icon]="bag"  size="2x" class="ion-text-center"></fa-icon></span>
+          <br><span class="order-text">ORDER DETAILS</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

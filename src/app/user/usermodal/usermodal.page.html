@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="default">
+    <ion-title mod="ios" >Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col [routerLink]="'/tabs/address'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards">
+          <ion-icon name="person" color="success" ></ion-icon>
+          <p><span class=" settings-profile-text">Profile</span></p>
+        </ion-card>
+      </ion-col>
+      <ion-col [routerLink]="'/tabs/myorder'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards">
+          <ion-icon name="cart" color="success" ></ion-icon>
+          <p><span class=" settings-order-text">My Order</span></p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [routerLink]="'/tabs/favourate'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards">
+          <ion-icon  name="heart" color="success"></ion-icon>
+          <p><span class=" settings-profile-text">Favourites</span></p>
+        </ion-card>
+      </ion-col>
+      <ion-col  [routerLink]="'/tabs/offer'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards">
+          <ion-icon name="pricetag" color="success" ></ion-icon>
+          <p><span class=" settings-order-text">Offers</span></p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [routerLink]="'/tabs/profile'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards" style="padding-bottom: 22px;">
+          <ion-icon  name="pricetags" color="success"></ion-icon>
+          <p><span class=" settings-deliver-text"> <ion-text> Delivery Details</ion-text></span></p>
+        </ion-card>
+      </ion-col >
+      <ion-col [routerLink]="'/tabs/message'" (click)="closeModal()">
+        <ion-card class="ion-padding settings-cards">
+          <ion-icon name="mail" color="success" ></ion-icon>
+          <p><span class=" settings-order-text">Messages</span></p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col (click)="logout()">
+        <ion-list>
+          <ion-item>
+            <!-- <ion-card> -->
+              <ion-icon name="log-out" slot="start" color="success"></ion-icon>
+              <ion-text class="ion-text-center">{{log}}</ion-text>
+            <!-- </ion-card> -->
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

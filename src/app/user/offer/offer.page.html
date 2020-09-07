@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click) = "back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>OFFERS</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div cards>
+    <div class="grid-full">
+      <ion-row>
+        <ion-col *ngFor="let product of products">
+          <ion-card>
+            <ion-card-header>
+              <div class="image-section">
+                <img src="{{product.Image}}" style="width: 100%; height: 150px;" />
+              </div> 
+            </ion-card-header> 
+            <ion-card-content class="content-1">
+              <div class="product-main">
+                <ion-label class="product-name">{{product.itemname}}</ion-label>
+              </div>
+            </ion-card-content>
+            <ion-card-content>
+              <div class="detail-part">
+                <span class="price-list " *ngIf = "!product.isoffer" >AED : {{ product.Rate }}</span>
+                <span class="offer-price" *ngIf = "product.isoffer">AED : {{ product.Rate }}</span>
+                <span class="price-list " *ngIf = "product.isoffer" style="text-decoration: line-through;">AED : {{ product.Rate }}</span>
+                <span slot="end" class="unit ">{{ product.measure }}{{ product.Unit }} </span>
+              </div>
+            </ion-card-content>
+            <ion-card-content class="ion-card-footer">
+              <div class="product-details">
+                <ion-button fill="outline" color="#60b246" [hidden]="!product.hidefield" class="add-to-cart" (click)="addcart($event,product)">
+                  ADD
+                </ion-button>
+              <ion-label [hidden]="product.hidefield" class=" outline add-to-cart">
+                <ion-icon name="remove" class="ion-padding-end " (click)="decreaseProduct(product)"></ion-icon>
+                <ion-label class="product-qnty" >{{product.quantity}}</ion-label>
+                <ion-icon name="add" class="ion-padding-start " (click)="addcart($event,product)"></ion-icon>
+              </ion-label>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

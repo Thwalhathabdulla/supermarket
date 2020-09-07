@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>PRODUCTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- ////////////////////subcategory segment/////////////////////////// -->
+
+
+  <ion-segment scrollable mode="md" value="0" [(ngModel)]="allcategory" *ngIf="!skelitonItems.length">
+    <ion-segment-button value="0" (click)="onSegmentChange(0)" >
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngFor="let subcat of subcategorys" value="{{subcat.SID}}"
+      (click)="onSegmentChange(subcat.SID)">
+      <ion-label>{{subcat.SubCategoryName}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+    <!-- //////////////////////// end ///////////////////////////////////////// -->
+
+  <!-- //////////////////////////////product list start//////////////////////////// -->
+  <div cards>
+    <div class="grid-full">
+      <ion-row *ngIf="skelitonItems.length">
+        <!-- skeliton loading -->
+          <ion-col *ngFor = "let items of skelitonItems">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h3>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h3>
+                <p>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+                <p>
+                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        
+      </ion-row>
+      <ion-row>
+        <ion-col *ngFor="let product of products">
+          <ion-card>
+            <ion-card-header>
+              <div class="image-section">
+                <img src="{{product.Image}}" style="width: 100%; height: 150px;" />
+              </div> 
+            </ion-card-header> 
+            <ion-card-content class="content-1">
+              <div class="product-main">
+                <ion-label class="product-name">{{product.itemname}}</ion-label>
+              </div>
+            </ion-card-content>
+            <ion-card-content>
+              <div class="detail-part">
+                <span class="price-list " *ngIf = "!product.isoffer" >AED : {{ product.Rate }}</span>
+                <span class="offer-price" *ngIf = "product.isoffer">AED : {{ product.Rate }}</span>
+                <span class="price-list " *ngIf = "product.isoffer" style="text-decoration: line-through;">AED : {{ product.Rate }}</span>
+                <span slot="end" class="unit ">{{ product.measure }}{{ product.Unit }} </span>
+              </div>
+            </ion-card-content>
+            <ion-card-content class="ion-card-footer">
+              <div class="product-details">
+                <ion-button fill="outline" color="#60b246" [hidden]="!product.hidefield" class="add-to-cart" (click)="addcart($event,product)">
+                  ADD
+                </ion-button>
+              <ion-label [hidden]="product.hidefield" class=" outline add-to-cart">
+                <ion-icon name="remove" class="ion-padding-end " (click)="decreaseProduct(product)"></ion-icon>
+                <ion-label class="product-qnty" >{{product.quantity}}</ion-label>
+                <ion-icon name="add" class="ion-padding-start " (click)="addcart($event,product)"></ion-icon>
+              </ion-label>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+<!-- ///////////////////////////////////////end /////////////////////////////////// -->
+
+</ion-content>

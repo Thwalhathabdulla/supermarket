@@ -1,0 +1,72 @@
+ion-content ion-toolbar {
+    --background: translucent;
+  }
+  
+  .add-to-cart {
+    //   float: right;
+    --border-radius: 0rem;
+    height: 26px;
+    width: 110px;
+    color: #60b246;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 30px;
+    box-shadow: 1;
+    //   margin-right: 2px;
+  }
+  .outline {
+    border: 1px solid #60b246;
+    //   margin-right: 1px;
+    //   margin-bottom: 4px;
+    //   margin-top: 4px;
+  }
+  .search {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+  }
+  .searchicon {
+    position: relative;
+    left: 50%;
+  }
+  .no-item-text {
+    margin-left: 40px;
+  }
+  .checkout {
+    background: #fdeded;
+    border-top: 1px solid #f5d3d3;
+    bottom: 0rem;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+  }
+  .order-btn
+  {
+    background: #42d77d;
+      position: relative;
+      top: 1px;
+      width: 100%;
+      left: 4px;
+      /* margin: -18px; */
+      color: #ffffff;
+  }
+  .View-btn
+  {
+    background: #ffffff;
+    // background: #60b246;
+    position: relative;
+      top: 1px;
+      width: 100%;
+      // color: #ffffff;
+  }
+  .flex-right {
+    float: right;
+  }
+  .checkout {
+    background: #fdeded;
+    border-top: 1px solid #f5d3d3;
+    bottom: 0rem;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+  }

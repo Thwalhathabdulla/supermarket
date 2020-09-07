@@ -1,17 +1,77 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+  <ion-toolbar color="primary">
+    <ion-title >
+      Cart
     </ion-title>
+    <ion-button [hidden]="!cartresult" slot="end" color="danger" fill="outline" style="background-color: white;" size="small" (click)="removecart()">
+      <ion-icon slot="end" name="trash" size="5"></ion-icon>
+      Remove All
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div padding>
+    <ion-list *ngIf="cartresult;else cart_not_found">
+      <ion-item *ngFor="let p of cart" class="ion-text-wrap">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="6" class="ion-align-self-center">
+              <ion-label class=" outline add-to-cart">
+                <ion-icon name="Remove" class="ion-padding-end ion-padding-start" (click)="decreaseProduct(p)"></ion-icon>
+                {{p.quantity}}
+                <ion-icon name="add" class="ion-padding-start" (click)="addcart(p)"></ion-icon>
+              </ion-label>
+            </ion-col>
+            <ion-col size="2" offset="4">
+              <ion-button color="medium" fill="clear" (click)="removeCartItem(p)">
+                <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              <ion-label>{{ p.itemname }}</ion-label>
+            </ion-col>
+            <ion-col size="4" class="ion-text-end">
+              {{ p.quantity * p.Rate | currency:'AED' }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+    <ng-template #cart_not_found>
+      <ion-label class="search">
+        <ion-icon name="cart" size="large" class="searchicon"></ion-icon><br />
+        <ion-label class="no-item-text">Your cart is empty</ion-label>
+        <div style="text-align:center">
+          <ion-button fill="outline" routerLink="/" routerDirection="root" color="primary" style="--border-radius: 0rem; height: 26px; width: 100%;position: absolute;left: 10%;">
+            SHOPPING
+          </ion-button >
+        </div>
+      </ion-label>
+    </ng-template>
+  </div>
+  <div class="checkout" [hidden]="!cartresult" >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <span>{{ getTotal() | currency:'AED' }}</span>
+          <ion-icon name="location-outline" class=" flex-right" size="large" (click)="checkout()"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="View-btn ion-padding" (click)="viewaddress()">
+          <ion-text color="default" mod="ios">
+            View Details
+          </ion-text>
+        </ion-col>
+        <ion-col class="order-btn ion-padding" (click)="ordernow()">
+          <ion-text color="default" mod="ios">
+            Order Now
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

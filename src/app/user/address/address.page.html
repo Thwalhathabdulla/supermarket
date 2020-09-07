@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)= "backbutton()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()" padding-top class=" ion-padding login-form">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >+971</ion-label>
+        <ion-input type="number" formControlName="number" placeholder="Phone number" [(ngModel)]="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="submit" [disabled]="!credentialsForm.valid">UPDATE</ion-button>
+    </form>
+  </div>
+</ion-content>
+ 

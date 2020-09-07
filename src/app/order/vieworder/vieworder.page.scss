@@ -1,0 +1,68 @@
+.circle
+{
+    height: 20px;
+    width: 20px;
+    // background-color: #bbb;
+    border: solid 1px rgb(81, 236, 9);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+}
+.order-details,.order-delevery
+{
+    display: block;
+    padding-top: 8%;
+}
+.actions
+{
+    position: absolute;
+    left: 65%;
+}
+.order-delevery{
+    margin-top: 0;
+}
+.check-icon{
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    position: absolute;
+    left: 39%;
+    color:  rgb(81, 236, 9);
+}
+.action-section{
+    position: relative;
+    top: 10%;
+}
+.issue-icons,.call-icons
+{
+    height: 30px;
+    width: 30px;
+    padding: 25% 25% 10% 25%;
+}
+.cancel-icons{
+    height: 30px;
+    width: 30px;
+    padding: 25% 25% 10% 42%;
+}
+.cancel-btn{
+    top: 10px;
+}
+.cart-icons{
+    height: 30px;
+    width: 30px;
+    padding: 25% 25% 10% 42%;
+}
+.view-btn{
+    top: 58px;
+}
+.view-icons{
+    padding-top: 20%;
+}
+.view-order-icon{
+    padding: 40%;
+}
+ion-card{
+    margin: 0;
+    min-height: 250px;
+}

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url : 'https://whispering-plains-19990.herokuapp.com'
+  // url : 'http://192.168.100.4:3002' 
+  // url : 'http://localhost:3002'
 };
 
 /*

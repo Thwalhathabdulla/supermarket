@@ -1,17 +1,72 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
+  <ion-toolbar color="primary">
+    <ion-title mod="ios">
+      Home
     </ion-title>
+    <ion-toggle class="ios-toggle" *ngIf = "ios" color="secondary" slot="end" mod="ios" (ionChange)="language($event)" [(ngModel)]="islanguageEn"></ion-toggle>
+    <span slot="end" *ngIf = "!ios">EN</span>
+    <ion-toggle [(ngModel)]="islanguageEn" slot="end" *ngIf = "!ios" (ionChange)="language($event)" color="success"></ion-toggle>
+    <span slot="end" *ngIf = "!ios">AR</span>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-slides [hidden]=slidershow  [options]="slideOptsOne" [routerLink]="'/tabs/offer'">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-slide>
+      <ion-card [ngStyle]= "{'background-image': 'url(../../assets/img/offer1.jpeg)'}" class="slider-card"></ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card [ngStyle]= "{'background-image': 'url(../../assets/img/offer2.jpeg)'}" class="slider-card"></ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card [ngStyle]= "{'background-image': 'url(../../assets/img/3.jpeg)'}" class="slider-card"></ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card [ngStyle]= "{'background-image': 'url(../../assets/img/4.jpeg)'}" class="slider-card"></ion-card>
+    </ion-slide>
+
+  </ion-slides>
+  <div cards>
+    <div class="grid-full">
+      <ion-row *ngIf="skelitonItems.length">
+        <!-- skeliton loading -->
+          <ion-col *ngFor = "let items of skelitonItems">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h3>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h3>
+                <p>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+                <p>
+                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        
+      </ion-row>
+      <ion-row>
+        <ion-col *ngFor="let category of categorys">
+          <ion-card [routerLink]="'/tabs/product/' + category.CID"  [ngStyle]= "{'background-image': 'url('+ category.Image +')'}" class="category-list">
+            <div class="main-category">
+            <p class="category-name">{{category.CategoryName}}</p>
+            </div>
+          </ion-card> 
+        
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
 </ion-content>
+

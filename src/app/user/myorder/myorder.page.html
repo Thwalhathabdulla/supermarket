@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>myorder</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)] = "orderValue" mode="md" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="pending">
+        <ion-label>PENDING</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="delevered">
+        <ion-label>DELEVERED</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="order"  *ngFor="let orders of pendingOrder" (click)="viewOrder(orders.ORDERID,orders.addr,orders.OrderStatus)">
+    <ion-item>
+      <ion-label>Order ID</ion-label>
+      <ion-label>{{orders.ORDERID}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-label>{{orders.OrderStatus}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Order Date</ion-label>
+      <ion-label>{{orders.OrderDate| date: 'dd/MM/yyyy hh:mm a'}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount</ion-label>
+      <ion-label>{{orders.Total}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click) = 'backbutton()'></ion-back-button>
+    </ion-buttons>
+    <ion-title>address</ion-title>
+    <ion-buttons slot="end" (click)="addaddress()">
+      <ion-button >
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+
+<ion-content>
+  <ion-card *ngFor="let addrs of address; let i = index" [attr.data-index]="i" (click)="activeAddr(i)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-label>{{addrs.name}}</ion-label>
+        <!-- <div class="check" [hidden]="!addrs.active">s</div> -->
+        <span class="check" [hidden]="!addrs.active"></span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Building</ion-label>
+        <ion-label>{{addrs.Buildinf}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>street</ion-label>
+        <ion-label>{{addrs.Street}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Postal </ion-label>
+        <ion-label>{{addrs.Postal}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone</ion-label>
+        <ion-label>{{addrs.Phone}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="full" (click)="edit(addrs.AddrId,i)">EDIT</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="full" color="danger" (click)="delete(addrs.AddrId,i)">DELETE</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+ 
